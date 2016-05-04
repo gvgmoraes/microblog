@@ -1,0 +1,45 @@
+
+<br>
+
+<%= link_to("User", user_path(@user.id))%>
+
+<h1><%= @post.user.username %></h1>
+
+<%= link_to("New Post", new_post_path(@post.id) ) %>
+
+
+<br>
+<h2> Post: </h2>
+
+
+<h1 style="color: <%= Faker::Color.hex_color %>"><%= @post.hipster %></h1> 
+<h6> <%= @post.created_at%></h6>
+<%= link_to("Delete", post_path(@post), method: :delete) %>
+<%= link_to("Edit", edit_post_path, method: :get) %>
+
+
+<br>
+<%= form_for [@post, Comment.new] do |f| %>
+	<%=f.label "Leave a Comment:" %>
+	<%=f.text_field :body %>
+	<%=f.hidden_field :user_id, value: session[:user_id] %>
+	<%=f.hidden_field :post_id, value: @post.id %>
+	<%=f.submit %>
+<% end %>
+
+<%= link_to("Back", posts_path)%>
+
+<h2> Comments: </h2>
+<h6> <% @post.comments.each do |t| %></h6>
+		<h2 style="color: <%= Faker::Color.hex_color %>"> <%= t.user.username%></h2>
+		<h6> <%= t.created_at %></h6> 
+		<p> <%= t.body %> </p>
+		<%= button_to "Delete comment", post_comment_path(@post.id, t.id), method: :delete %>
+<% end %>
+
+<br>
+<br>
+
+
+
+

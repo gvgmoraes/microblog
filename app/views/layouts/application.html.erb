@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Microblog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %>
+
+<nav>
+	<p><%= link_to "Home", root_path %></p>
+	<p><%= link_to "Users", users_path %></p>
+	<p><%= link_to "Posts", posts_path %></p>
+</nav>
+
+
+<%= yield %>
+
+
+</body>
+</html>

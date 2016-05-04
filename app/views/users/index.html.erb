@@ -1,0 +1,8 @@
+<% @users.each do |t| %> 
+
+<h3> <%= t.username %> </h3>
+<p style="color: <%= Faker::Color.hex_color %>"><%= t.email %> </p>
+<a href="users/<%= t.id %>">See Profile</a>
+
+
+<% end %>
