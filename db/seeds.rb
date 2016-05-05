@@ -7,9 +7,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.delete_all 
-# Post.delete_all 
-# Comment.delete_all 
+User.delete_all 
+Post.delete_all 
+Comment.delete_all 
 
 users = []
 20.times do 

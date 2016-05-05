@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  post "/posts/:post_id/comments/new" => "comments#create"
+  # post "/posts/:post_id/comments/new" => "comments#create"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -21,7 +21,10 @@ class SessionsController < ApplicationController
 
 	def destory 
 		session.clear 
-		redirect_to root_path
+		redirect_to users_path
 		flash[:notice] ="Signout sucessful"
 	end 
+
+	def new 
+	end
 end

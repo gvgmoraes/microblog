@@ -10,7 +10,9 @@
 
 <%= link_to("Back", users_path)%>
 
-    
+
+<%= link_to("Post", new_post_path)%>
+
 
  <br>
  <h2 style="color: <%= Faker::Color.hex_color %>"><%= @user.username%>'s posts:</h2>

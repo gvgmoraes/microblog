@@ -1,8 +1,7 @@
 <%= form_for Post.new do |f| %>
-	<%=f.label :Newhipster %>
+	<%=f.label "Write a new wHipster post!" %>
 	<%=f.text_field :hipster %>
-	<%=f.label :user_id %>
-	<%=f.text_field :user_id %>
+	<%=f.hidden_field :user_id, value: session[:user_id] %>
 	<%=f.submit %>
 <% end %>
 

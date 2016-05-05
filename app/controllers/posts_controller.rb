@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   def index
 	@posts = Post.all 
+
   end
 
   def new 
   	@post = Post.new
-  	@current_user = User.find_by_id(session[:current_user_id])
+  	# @current_user = User.find_by_id(session[:current_user_id])
   end 
 
   def show
@@ -14,8 +15,9 @@ class PostsController < ApplicationController
   	@comment = @post.comments
   end
 
-  def create 
-  	@post = Post.new(params[:id])
+  def create
+    # binding.pry
+  	@post = Post.new(post_params)
   	if @post.save
   		redirect_to @post
   	else
@@ -51,7 +53,7 @@ end
 
   private
     def post_params
-      params.require(:post).permit(:hipster)
+      params.require(:post).permit(:hipster, :user_id)
     end
 
 end

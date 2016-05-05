@@ -1,11 +1,11 @@
 
 <% @posts.each do |t| %> 
 
-<h2 style="color: <%= Faker::Color.hex_color%>"> <%=t.user.username%></h2>
-<h6> <%= t.created_at%></h6>
+	<h2 style="color: <%= Faker::Color.hex_color%>"><%=t.user.username%></h2>
+	<h6> <%= t.created_at%></h6>
 
-<p> <%= t.hipster %> </p>
+	<p> <%= t.hipster %> </p>
 
 
-<a href="posts/<%= t.id %>"> See Post</a>
+	<a href="posts/<%= t.id %>"> See Post</a>
 <% end %>
