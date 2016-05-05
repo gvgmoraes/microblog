@@ -2,25 +2,37 @@
 
 <h1><%= @user.username %></h1>
 <br>
+<%= link_to("Edit", edit_user_path(@user), method: :get) %>
+<%= link_to("Delete", user_path(@user), method: :delete) %>
 <h2 style="color: <%= Faker::Color.hex_color %>"><%= @user.email %></h2>
 <br>
 
-<%= link_to("Delete", user_path(@user), method: :delete) %>
-<%= link_to("Edit", edit_user_path(@user), method: :get) %>
 
 <%= link_to("Back", users_path)%>
 
+<br>
+<br>
 
-<%= link_to("Post", new_post_path)%>
+<%= form_for Post.new do |f| %>
+	<%=f.label "Write a new wHipster post!" %>
+	<%=f.text_field :hipster %>
+	<%=f.hidden_field :user_id, value: session[:user_id] %>
+	<%=f.submit %>
+<% end %>
+
 
 
  <br>
  <h2 style="color: <%= Faker::Color.hex_color %>"><%= @user.username%>'s posts:</h2>
-<% @posts.each do |t| %> 
 
+
+<% @posts.each do |t| %> 
+<%= link_to("See Post", post_path(t.id))%>
 	<p> <%= t.hipster %> </p>
 	<h6> <%= t.created_at%></h6>
 <% end %>
+
+
 
 
 

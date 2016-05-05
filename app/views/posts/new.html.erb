@@ -1,8 +1,0 @@
-<%= form_for Post.new do |f| %>
-	<%=f.label "Write a new wHipster post!" %>
-	<%=f.text_field :hipster %>
-	<%=f.hidden_field :user_id, value: session[:user_id] %>
-	<%=f.submit %>
-<% end %>
-
-<%= link_to("Back", posts_path)%>
