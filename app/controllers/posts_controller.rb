@@ -10,9 +10,14 @@ class PostsController < ApplicationController
   end 
 
   def show
-  	@post = Post.find(params[:id])
-  	@user = @post.user
-  	@comment = @post.comments
+     if current_user == nil 
+      flash[:alert] = "Sign in/Log in to access that!"
+      redirect_to root_path 
+    else 
+  	 @post = Post.find(params[:id])
+  	 @user = @post.user
+  	 @comment = @post.comments
+    end 
   end
 
   def create

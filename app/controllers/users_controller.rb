@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-  @user = User.new(user_params)
+    @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Your account was created
       successfully."
       redirect_to user_path @user
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user =User.new(params[:user])
+
   end
 
   def edit
@@ -37,11 +38,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
-    # @comments =@posts.comments
+    if current_user == nil 
+      flash[:alert] = "Sign in/Log in to access that!"
+      redirect_to root_path 
+    else 
+      @user = User.find(params[:id])
+      @posts = @user.posts
+    end
   end
-
 
 
   def destroy
