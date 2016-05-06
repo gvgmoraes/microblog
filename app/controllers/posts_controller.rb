@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    
   	@post = Post.new(post_params)
   	if @post.save
   		redirect_to @post
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end 
 
   def update 
-	   @post = Post.find(post_params)
+	   @post = Post.find(params[:id])
      
 	   @post.update(post_params)
 	   if @post.save
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 end 
 
  def edit 
-  	@post=Post.find(post_params)
+  	@post = Post.find(params[:id])
   end 
   
   def destroy
