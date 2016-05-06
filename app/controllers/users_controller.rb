@@ -46,6 +46,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user =User.find(params[:id])
+    # @posts=@user.posts 
+    # @comments=@
     if @user.destroy 
       session.clear 
       flash[:notice] = "User deleted"

@@ -19,10 +19,10 @@ class SessionsController < ApplicationController
 	end 
 
 
-	def destory 
-		session.clear 
-		redirect_to users_path
+	def destroy 
+		session[:user_id] = nil
 		flash[:notice] ="Signout sucessful"
+		redirect_to users_path
 	end 
 
 	def new 

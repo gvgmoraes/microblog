@@ -18,9 +18,8 @@
 </nav>
 <br>
 <br>
-<%= form_tag '/logout', method: 'delete' do %>
-	<%=submit_tag 'logout' %>
-<% end %>
+<%= link_to "Log Out", '/logout'%>
+
 
 <%= yield %>
 

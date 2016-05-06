@@ -26,7 +26,8 @@ class PostsController < ApplicationController
   end 
 
   def update 
-	   @post = Post.find(params[:id])
+	   @post = Post.find(post_params)
+     
 	   @post.update(post_params)
 	   if @post.save
       flash[:notice] = "Post updated"
@@ -37,18 +38,22 @@ class PostsController < ApplicationController
 end 
 
  def edit 
-  	@post=Post.find(params[:id])
+  	@post=Post.find(post_params)
   end 
   
   def destroy
   	@post =Post.find(params[:id])
-  	if @post.destroy 
-  		flash[:notice] = "Post deleted"
-  		redirect_to '/posts'
-  	else 
-  		flash[:alert] = "Error in deleting"
-  		redirect_to @post
-  	end
+    if @post.user_id == current_user.id
+    	if @post.destroy 
+    		flash[:notice] = "Post deleted"
+    		redirect_to '/posts'
+    	else 
+    		flash[:alert] = "Error in deleting"
+    		redirect_to @post
+    	end
+    else 
+      flash[:alert] = "You're not the owner of this post"
+    end 
   end 
 
   private
