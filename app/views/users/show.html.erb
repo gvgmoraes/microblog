@@ -10,10 +10,6 @@
 <br>
 
 
-<%= link_to("All Users", users_path)%>
-
-<br>
-<br>
 <%if @user.id == current_user.id%>
 	<%= form_for Post.new do |f| %>
 		<%=f.label "Write a new wHipster post!" %>
@@ -33,10 +29,6 @@
 	<p> <%= t.hipster %> </p>
 	<h6> <%= t.created_at%></h6>
 <% end %>
-
-
-
-
 
 
 <br>

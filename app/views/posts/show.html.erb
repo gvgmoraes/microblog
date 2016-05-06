@@ -11,6 +11,7 @@
 
 
 <h1 style="color: <%= Faker::Color.hex_color %>"><%= @post.hipster %></h1> 
+
 <h6> <%= @post.created_at%></h6>
 
 <%if @post.user_id == current_user.id%>
@@ -27,14 +28,19 @@
 	<%=f.submit %>
 <% end %>
 
-<%= link_to("All Posts", posts_path)%>
+
+
+
 
 <h2> Comments: </h2>
 <h6> <% @post.comments.each do |t| %></h6>
 		<h2 style="color: <%= Faker::Color.hex_color %>"> <%= t.user.username%></h2>
 		<h6> <%= t.created_at %></h6> 
 		<p> <%= t.body %> </p>
-		<%= button_to "Delete comment", post_comment_path(@post.id, t.id), method: :delete %>
+
+		<%if @post.user_id == current_user.id || t.user.id == current_user.id%>
+			<%= button_to "Delete comment", post_comment_path(@post.id, t.id), method: :delete %>
+		<% end %>
 <% end %>
 
 <br>
